@@ -54,8 +54,9 @@ window.addEventListener('load', () => {
   function draw(e) {
     if (!painting) return;
 
-    const x = e.clientX;
-    const y = e.clientY;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
     const pressure = e.pressure || 0;
     const now = Date.now();
 
@@ -67,14 +68,14 @@ window.addEventListener('load', () => {
     strokes[strokes.length - 1].points.push({
       x,
       y,
-      pressure,
+      pressure, // still recorded
       dt,
       tTotal
     });
 
     lastTime = now;
 
-    ctx.lineWidth = (pressure || 0.5) * 20;
+    ctx.lineWidth = 10; // fixed line width
     ctx.lineCap = "round";
     ctx.lineTo(x, y);
     ctx.stroke();
