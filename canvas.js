@@ -14,7 +14,7 @@ window.addEventListener('load', () => {
   let currentTask = 0;
   const userData = { drawings: [] };
 
-  const taskPrompts = ["Draw a house", "Draw a sun", "Draw a boy"];
+  const taskPrompts = ["Draw a House", "Draw a Sun", "Draw a Boy"];
 
   function startPosition(e) {
     painting = true;
@@ -96,6 +96,11 @@ window.addEventListener('load', () => {
 
   const taskCounter = document.createElement("p");
   taskCounter.textContent = `Drawing Task ${currentTask + 1} of ${totalTasks} — ${taskPrompts[currentTask]}`;
+  taskCounter.style.fontSize = "24px";
+  taskCounter.style.fontWeight = "bold";
+  taskCounter.style.textAlign = "center";
+  taskCounter.style.margin = "10px 0";
+  taskCounter.style.color = "black"; // Changed from #003366 to black
   document.body.insertBefore(taskCounter, canvas);
 
   const buttonContainer = document.createElement("div");
@@ -177,7 +182,7 @@ window.addEventListener('load', () => {
         headline.style.margin = "0 0 8px 0";
 
         const score = document.createElement("p");
-        score.textContent = "---%";
+        score.textContent = "------%";
         score.style.margin = "0 0 12px 0";
         score.style.fontSize = "18px";
 
@@ -188,7 +193,7 @@ window.addEventListener('load', () => {
         closeBtn.onclick = () => overlay.remove();
 
         const viewDataBtn = document.createElement("button");
-        viewDataBtn.textContent = "View Stroke Data";
+        viewDataBtn.textContent = "View stroke data";
         viewDataBtn.style.position = "absolute";
         viewDataBtn.style.bottom = "10px";
         viewDataBtn.style.right = "10px";
